@@ -95,11 +95,11 @@ public class RegistrationStepTest {
     public void user_selects_an_item_and_add_to_the_cart() {
     cp.clickOnPrintDress();
     cp.clickOnAddToCart();
+    GenericHelper.implicitlyWait();
     }
     @Then("the item should be successfully added")
     public void the_item_should_be_successfully_added() throws InterruptedException {
         String expectedMessage = "Product successfully added to your shopping cart";
-        Thread.sleep(3000);
         String actualMessage = cp.getMessage();
         AssertHelper.areEqual(expectedMessage,actualMessage);
 

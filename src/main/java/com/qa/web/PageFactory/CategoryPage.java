@@ -23,13 +23,8 @@ public class CategoryPage extends PageBase {
      **/
     @FindBy(how = CSS, using = "a.product-name")
     private WebElement clickPrintDressLink;
-
-      /*  @FindBy(how =XPATH, using = "//a[@title='Printed Dress'][1]")
-        private WebElement clickPrintDressLink; */
     @FindBy(how = XPATH, using = "//span[contains(text(),'Add to cart')]")
     private WebElement clickAddtoCart;
- /*   @FindBy(how = XPATH, using = "//*[@id='layer_cart']/div[1]/div[1]/h2")
-    private WebElement getSuccessMessage; */
     @FindBy(how = XPATH, using = "(//h2)[1]")
     private WebElement getSuccessMessage;
   /* @FindBy(how =CSS, using = "div>h2:nth-of-type(1)")
@@ -44,11 +39,6 @@ public class CategoryPage extends PageBase {
     }
 
     public String getMessage() {
-                return getSuccessMessage.getText();
+        return getSuccessMessage.getText();
     }
-        /*
-      public void jsClickonDresses () {
-        //  GenericHelper.isWebelementActive(btnSignin);
-        GenericHelper.jsClickOnElement(btnDresses);
-       } */
 }

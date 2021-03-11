@@ -13,7 +13,7 @@ Feature: Create an Account for Automation Practice Application
 
     Examples:
       | e-mail address 		|firstName     |lastName     |address             | phoneNo        |city    |
-      |"abc1243@gmail.com"	|"TestUserA"   |"Automation" |"6185 Retail Rd"    |"1 972-656-2196"|"Dallas"|
+      |"abc1245@gmail.com"	|"TestUserA"   |"Automation" |"6185 Retail Rd"    |"1 972-656-2196"|"Dallas"|
 
   @system
   Scenario: Verify that user is able to add an item to the cart
