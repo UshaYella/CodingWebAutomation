@@ -1,6 +1,6 @@
 Feature: Create an Account for Automation Practice Application
 
-  @system1
+  @system
   Scenario Outline: Verify that user is able to create a new account
     Given User in on Automation home page
     When User clicks on Sign in link
