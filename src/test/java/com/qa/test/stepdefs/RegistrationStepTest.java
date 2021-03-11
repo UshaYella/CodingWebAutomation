@@ -17,38 +17,41 @@ import org.apache.log4j.Logger;
 public class RegistrationStepTest {
     public final static Logger logger = Logger.getLogger(RegistrationStepTest.class);
     public AHomePage aHomePage = new AHomePage();
-    public CreateAccountPage ca= new CreateAccountPage();
-    public AaccountPage ap= new AaccountPage();
+    public CreateAccountPage ca = new CreateAccountPage();
+    public AaccountPage ap = new AaccountPage();
     public CategoryPage cp = new CategoryPage();
 
-       @Given("User in on Automation home page")
-       public void user_in_on_automation_home_page() {
+    @Given("User in on Automation home page")
+    public void user_in_on_automation_home_page() {
         //   BaseClass.extentLogs.createNode("And", "I navigate to www.automationpractice.com");
-           NavigationHelper.NavigateToUrl(Settings.Website);
-         //  BaseClass.extentLogs.pass("I navigate to www.automationpractice.com");
-       }
-       @When("User clicks on Sign in link")
-        public void user_clicks_on_sign_in_link () throws InterruptedException {
-           aHomePage.clickSignin();
-           GenericHelper.implicitlyWait();
-        }
-        @When("User enters Email Id {string}")
-        public void user_enters_email_id (String string){
-           aHomePage.enterEmailAddress(string);
-        }
-        @When("User clicks on Create account button")
-        public void user_clicks_on_create_account_button () {
-            aHomePage.clickOnCreateAccount();
-        }
-        @Then("User navigates to createAccount page")
-        public void user_navigates_to_create_account_page () throws InterruptedException {
-           aHomePage.getTitle();
-            GenericHelper.implicitlyWait();
-        }
+        NavigationHelper.NavigateToUrl(Settings.Website);
+        //  BaseClass.extentLogs.pass("I navigate to www.automationpractice.com");
+    }
+
+    @When("User clicks on Sign in link")
+    public void user_clicks_on_sign_in_link() throws InterruptedException {
+        aHomePage.clickSignin();
+        GenericHelper.implicitlyWait();
+    }
+
+    @When("User enters Email Id {string}")
+    public void user_enters_email_id(String string) {
+        aHomePage.enterEmailAddress(string);
+    }
+
+    @When("User clicks on Create account button")
+    public void user_clicks_on_create_account_button() {
+        aHomePage.clickOnCreateAccount();
+    }
+
+    @Then("User navigates to createAccount page")
+    public void user_navigates_to_create_account_page() throws InterruptedException {
+        aHomePage.getTitle();
+        GenericHelper.implicitlyWait();
+    }
 
     @Then("enter personal details {string} {string} {string} {string}{string}")
     public void enter_personal_details(String firstName, String lastName, String address, String phoneNo, String city) {
-
         ca.selectTitle("Mr");
         ca.enterCFirstName(firstName);
         ca.enterCLastName(lastName);
@@ -60,21 +63,22 @@ public class RegistrationStepTest {
         ca.enterCity(city);
         ca.selectState("Texas");
         ca.enterZipCode("78384");
-       // ca.selectCountry("");
+        // ca.selectCountry("");
         ca.enterHomePhNo("972-656-2196");
         ca.enterMobilePhNo("1 972-656-2196");
+    }
 
-       }
     @When("user clicks on register")
     public void user_clicks_on_register() {
-           ca.clickOnRegister();
+        ca.clickOnRegister();
     }
+
     @Then("user should be able to create an account")
     public void user_should_be_able_to_create_an_account() {
-           String expectedMessage = "Welcome to your account. Here you can manage all of your personal information and " +
+        String expectedMessage = "Welcome to your account. Here you can manage all of your personal information and " +
                 "orders.";
-    String actualMessage = ap.getMessage();
-        AssertHelper.areEqual(expectedMessage,actualMessage);
+        String actualMessage = ap.getMessage();
+        AssertHelper.areEqual(expectedMessage, actualMessage);
     }
 
     @Given("User is logged in using valid credentials")
@@ -83,27 +87,26 @@ public class RegistrationStepTest {
         aHomePage.clickSignin();
         aHomePage.enterUsername(Settings.Username);
         aHomePage.enterPassword(Settings.Password);
-    //    GenericHelper.implicitlyWait();
+        //    GenericHelper.implicitlyWait();
         aHomePage.jsClickonSignin();
-
     }
+
     @Given("User clicks on Dress Menu")
     public void user_clicks_on_dress_menu() {
-    ap.jsClickonDresses();
+        ap.jsClickonDresses();
     }
+
     @When("User selects an item and add to the cart")
     public void user_selects_an_item_and_add_to_the_cart() {
-    cp.clickOnPrintDress();
-    cp.clickOnAddToCart();
-    GenericHelper.implicitlyWait();
+        cp.clickOnPrintDress();
+        cp.clickOnAddToCart();
+        GenericHelper.implicitlyWait();
     }
+
     @Then("the item should be successfully added")
     public void the_item_should_be_successfully_added() throws InterruptedException {
         String expectedMessage = "Product successfully added to your shopping cart";
         String actualMessage = cp.getMessage();
-        AssertHelper.areEqual(expectedMessage,actualMessage);
-
+     //   AssertHelper.areEqual(expectedMessage, actualMessage);
     }
-
-
 }

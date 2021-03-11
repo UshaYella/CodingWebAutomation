@@ -1,5 +1,4 @@
 package com.qa.web.PageFactory;
-
 import com.qa.web.componenthelper.*;
 import com.qa.web.driverclass.PageBase;
 import org.apache.log4j.Logger;
@@ -12,40 +11,31 @@ import static org.openqa.selenium.support.How.*;
 public class AaccountPage extends PageBase {
     static final Logger logger = Logger.getLogger(AaccountPage.class);
     private static WebDriver driver = ObjectRepository.Driver;
-
     PageBase pageBase = new PageBase(driver);
 
     public AaccountPage() {
         super(driver);
     }
 
-        /** Webelement **/
-        @FindBy(how = CLASS_NAME, using = "info-account")
-        private WebElement displayMessage;
+    /**
+     * Webelement
+     **/
+    @FindBy(how = CLASS_NAME, using = "info-account")
+    private WebElement displayMessage;
+    @FindBy(how = CSS, using = "a[title='Dresses']")
+    private WebElement btnDresses;
 
-       @FindBy(how = CSS,  using = "a[title='Dresses']")
-        private WebElement btnDresses;
+    public String getMessage() {
+        return displayMessage.getText();
+    }
 
+    /*
+    public void clickOnDresses() {
 
-
-        public String getMessage () {
-        return   displayMessage.getText();
-
-        }
-        /*
-        public void clickOnDresses() {
-
-            ButtonHelper.clickButton(btnDresses);
-        } */
-      public void jsClickonDresses () {
+        ButtonHelper.clickButton(btnDresses);
+    } */
+    public void jsClickonDresses() {
         //  GenericHelper.isWebelementActive(btnSignin);
         GenericHelper.jsClickOnElement(btnDresses);
-       }
-
-
-
-
-
-
-
+    }
 }

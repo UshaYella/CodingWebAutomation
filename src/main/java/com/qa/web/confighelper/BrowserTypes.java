@@ -1,5 +1,4 @@
 package com.qa.web.confighelper;
-
 public enum BrowserTypes {
     Firefox,
     Chrome,
@@ -7,6 +6,4 @@ public enum BrowserTypes {
     Safari,
     Edge,
     Opera
-
-
 }

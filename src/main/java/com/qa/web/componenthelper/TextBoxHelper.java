@@ -1,22 +1,17 @@
 package com.qa.web.componenthelper;
-
 import org.openqa.selenium.WebElement;
 public class TextBoxHelper {
     private static WebElement element;
 
-
-    public static void TypeInTextBox(WebElement locator, String text)
-    {
+    public static void TypeInTextBox(WebElement locator, String text) {
         element = GenericHelper.getElement(locator);
         element.sendKeys(text);
-  //      Logger.Info($" Type in Textbox @ {locator} : value : {text}");
+        //      Logger.Info($" Type in Textbox @ {locator} : value : {text}");
     }
 
-    public static void ClearTextBox(WebElement locator)
-    {
+    public static void ClearTextBox(WebElement locator) {
         element = GenericHelper.getElement(locator);
         element.clear();
-      //  Logger.Info($" Clear the Textbox @ {locator}");
+        //  Logger.Info($" Clear the Textbox @ {locator}");
     }
-
 }

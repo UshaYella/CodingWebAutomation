@@ -1,5 +1,4 @@
 package com.qa.web.componenthelper;
-
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.*;
 
@@ -7,12 +6,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 public class GenericHelper {
-
     private static Select select;
     private static WebElement element;
 
     public static void goToUrl(String url) {  //try to remove
-
         ObjectRepository.getDriver().get(url);
     }
 
@@ -24,9 +21,8 @@ public class GenericHelper {
      * @ImplicitlyWait
      */
     public static void implicitlyWait() {
-         ObjectRepository.getDriver().manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
+        ObjectRepository.getDriver().manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
     }
-
     //remove
 
     /**
@@ -34,10 +30,8 @@ public class GenericHelper {
      * @setDriver
      */
     //public static void setDriver(WebDriver driver) {//try
-
     //    Driver = driver;
     //}
-
     //todo: handling unique element ONLY
     public static boolean isElementPresent(WebElement Locator) {
         try {
@@ -73,29 +67,24 @@ public class GenericHelper {
     public static boolean isRadioBtnChecked(WebElement locator) {
         element = getElement(locator);
         String flag = element.getAttribute("data-val");
-
         if (flag == null)
             return false;
         else
             return flag.equalsIgnoreCase("true") || flag.equalsIgnoreCase("checked");
     }
 
-
     public static boolean isRadioBtnChecked2(WebElement locator) {
         element = getElement(locator);
         String flag = element.getAttribute("aria-invalid");
-
         if (flag == null)
             return false;
         else
             return flag.equalsIgnoreCase("false") || flag.equalsIgnoreCase("checked");
     }
 
-
     public static boolean isCheckedCheckBox(WebElement locator) {
         element = getElement(locator);
         String flag = element.getAttribute("aria-expanded");
-
         if (flag == null)
             return false;
         else
@@ -105,7 +94,6 @@ public class GenericHelper {
     public static boolean isSubmittedCheckByDefault(WebElement locator) {
         element = getElement(locator);
         String flag = element.getAttribute("class");
-
         if (flag == null)
             return false;
         else
@@ -116,34 +104,27 @@ public class GenericHelper {
      * @WaitForPageToLoad
      */
     public static void waitForPageToLoad() {
-
         //todo: replace "Driver" to "ObjectRepository.getDriver()" and replace "WebDriverWait" to var
         WebDriverWait wait = new WebDriverWait(ObjectRepository.getDriver(), 120);
         JavascriptExecutor jsExecutor = (JavascriptExecutor) ObjectRepository.getDriver();
-
-        ExpectedCondition<Boolean> jsLoad = webDriver -> ((JavascriptExecutor)ObjectRepository.getDriver())
+        ExpectedCondition<Boolean> jsLoad = webDriver -> ((JavascriptExecutor) ObjectRepository.getDriver())
                 .executeScript("return document.readyState").toString().equals("complete"); //ToDo: Tp check if page is fully loaded
-
         //Get JS Ready
         boolean jsReady = jsExecutor.executeScript("return document.readyState").toString().equals("complete");
-
         if (!jsReady)
             wait.until(jsLoad);
-
     }
 
     public static void WaitForTextToBeVisible() {
         WebDriverWait wait = new WebDriverWait(ObjectRepository.getDriver(), 120);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(text(), 'Veterinary Medicines Directorate')]")));
-      //  Settings.logs.Write("Wait for Header text to be visible");
+        //  Settings.logs.Write("Wait for Header text to be visible");
     }
-
 
     /**
      * @param elementFindBy
      */
     public static void waitForElementVisible(final WebElement elementFindBy) {
-
         //WebDriverWait wait = new WebDriverWait(Driver, 120);
         WebDriverWait wait = new WebDriverWait(ObjectRepository.getDriver(), 120);
         wait.until(ExpectedConditions.visibilityOf(elementFindBy));
@@ -154,7 +135,6 @@ public class GenericHelper {
      * @param text
      */
     public static void WaitForElementTextVisible(final WebElement elementFindBy, String text) {
-
         //WebDriverWait wait = new WebDriverWait(Driver, 120);
         WebDriverWait wait = new WebDriverWait(ObjectRepository.getDriver(), 120);
         wait.until(ExpectedConditions.textToBePresentInElement(elementFindBy, text));
@@ -165,7 +145,6 @@ public class GenericHelper {
      * @param text
      */
     public static void WaitUntilTextDisplayed(final By element, String text) {
-
         //WebDriverWait wait = new WebDriverWait(Driver, 120);
         WebDriverWait wait = new WebDriverWait(ObjectRepository.getDriver(), 120);
         wait.until(textDisplayed(element, text));
@@ -175,7 +154,6 @@ public class GenericHelper {
      *
      */
     private static ExpectedCondition<Boolean> textDisplayed(final By elementFindBy, final String text) {
-
         return webDriver -> webDriver.findElement(elementFindBy).getText().contains(text);
     }
 
@@ -189,14 +167,10 @@ public class GenericHelper {
          WebDriverWait wait = new WebDriverWait(ObjectRepository.getDriver(), 120);
           wait.until(webDriver -> webDriver.findElement(elementFindBy).isEnabled());
     } */
-
     public static void waitElementEnabled(final By elementFindBy) {
-
         WebDriverWait wait = new WebDriverWait(ObjectRepository.getDriver(), 120);
         wait.until(ExpectedConditions.elementToBeClickable(ObjectRepository.Driver.findElement(elementFindBy)));
     }
-
-
 
     /**
      * @param locator
@@ -239,7 +213,6 @@ public class GenericHelper {
     }
 
     public static boolean checkLinksAndURLs(Map<String, String> data) {
-
         for (Map.Entry<String, String> entry : data.entrySet()) {
             if (!ObjectRepository.getDriver().findElement(By.linkText(entry.getKey())).getAttribute("href").contains(entry.getValue()))
                 return false;
@@ -259,8 +232,8 @@ public class GenericHelper {
             wait.until(ExpectedConditions.elementToBeClickable(locator)).click();
             waitForPageToLoad();
             //Settings.logs.Write("Wait for element to be clickable");
-        }catch (TimeoutException te){
-           // Settings.logs.Write("Wait for element timed out.clicking the element");
+        } catch (TimeoutException te) {
+            // Settings.logs.Write("Wait for element timed out.clicking the element");
             locator.click();
         }
     }
@@ -282,13 +255,13 @@ public class GenericHelper {
     public static void selectElement(WebElement locator, String visibletext) {
         select = new Select(locator);
         select.selectByVisibleText(visibletext);
-      //  Settings.logs.Write("select " + visibletext + " from dropdown");
+        //  Settings.logs.Write("select " + visibletext + " from dropdown");
     }
 
     public static String getSelectElementText(WebElement locator) {
         Select selectDropdown = new Select(locator);
         String selectedOption = selectDropdown.getFirstSelectedOption().getAttribute("value");
-     //   Settings.logs.Write("selected option " + selectedOption + " from dropdown");
+        //   Settings.logs.Write("selected option " + selectedOption + " from dropdown");
         return selectedOption;
     }
 
@@ -296,7 +269,7 @@ public class GenericHelper {
         waitElementEnabled(By.className("button")); ////a[contains(text(),'Schools (')]
         //Driver.findElement(By.className("button")).click();
         ObjectRepository.getDriver().findElement(By.className("button")).click();
-      //  Settings.logs.Write("Clicking Save And Continue Button");
+        //  Settings.logs.Write("Clicking Save And Continue Button");
     }
 
     public static String getRandomnumber(int n) {
@@ -308,7 +281,7 @@ public class GenericHelper {
             // generate a random number between
             // 0 to AlphaNumericString variable length
             int index
-                    = (int)(AlphaNumericString.length()
+                    = (int) (AlphaNumericString.length()
                     * Math.random());
             // add Character one by one in end of sb
             sb.append(AlphaNumericString
@@ -318,30 +291,25 @@ public class GenericHelper {
     }
 
     public static void backBtn() {
-
         waitElementEnabled(By.partialLinkText("Back"));
         //Driver.findElement(By.partialLinkText("Back")).click();
         ObjectRepository.getDriver().findElement(By.partialLinkText("Back")).click();
-      //  Settings.logs.Write("Clicking Back Button");
+        //  Settings.logs.Write("Clicking Back Button");
     }
-
-
 
     /**
      *
      */
     public static void continueBtn() {
-
 //        WaitElementEnabled(By.cssSelector("body > div.site-wrapper > div.content > div > div > form > div > div:nth-child(2) > input"));
         waitElementEnabled(By.xpath("//input[@value='Continue']"));
         //Driver.findElement(By.cssSelector("body > div.site-wrapper > div.content > div > div > form > div > div:nth-child(2) > input")).click();
 //        ObjectRepository.getDriver().findElement(By.cssSelector("body > div.site-wrapper > div.content > div > div > form > div > div:nth-child(2) > input")).click();
         ObjectRepository.getDriver().findElement(By.xpath("//input[@value='Continue']")).click();
-      //  Settings.logs.Write("Clicking Continue Button");
+        //  Settings.logs.Write("Clicking Continue Button");
     }
 
     public static void acceptingAlert() {
-
         // Switching to Alert
         Alert alert = ObjectRepository.getDriver().switchTo().alert();
         // Accepting alert
@@ -349,7 +317,6 @@ public class GenericHelper {
     }
 
     public static void dismissingAlert() {
-
         // Switching to Alert
         Alert alert = ObjectRepository.getDriver().switchTo().alert();
         // dismissing alert
@@ -357,14 +324,11 @@ public class GenericHelper {
     }
 
     public static void switchingToAlert() {
-
         // Switching to Alert
         Alert alert = ObjectRepository.getDriver().switchTo().alert();
-
         System.out.println(alert.getText());
         //alert.getText().contains("");
     }
-
 
     public static void enterText(WebElement webElement, String string) {
         try {
@@ -378,16 +342,15 @@ public class GenericHelper {
         }
     }
 
-    private static boolean AttributeExists(WebElement element, String attribute){
+    private static boolean AttributeExists(WebElement element, String attribute) {
         String value = element.getAttribute(attribute);
         return value != null && !value.isEmpty();
     }
 
-
     //Method to get attribute of a web element
     public static String getWebElementAttribute(WebElement element) {
         String attributeValue;
-        String[] attributes = new String[] { "id", "name", "class", "title", "src", "alt", "href" };
+        String[] attributes = new String[]{"id", "name", "class", "title", "src", "alt", "href"};
         for (String attribute : attributes) {
             if (AttributeExists(element, attribute)) {
                 attributeValue = element.getAttribute(attribute);
@@ -409,15 +372,9 @@ public class GenericHelper {
         }
         return status;
     }
-   public static void jsClickOnElement(WebElement element) {
 
-       JavascriptExecutor executor = (JavascriptExecutor) ObjectRepository.getDriver();
-       executor.executeScript("arguments[0].click();", element);
-   }
-
-
-
-
-
-
+    public static void jsClickOnElement(WebElement element) {
+        JavascriptExecutor executor = (JavascriptExecutor) ObjectRepository.getDriver();
+        executor.executeScript("arguments[0].click();", element);
+    }
 }

@@ -1,0 +1,12 @@
+-------------------------------------------------------------------------------
+Test set: com.qa.test.TestRunners.TestRunner
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 19.157 sec <<< FAILURE!
+Verify that user is able to add an item to the cart(Create an Account for Automation Practice Application)  Time elapsed: 15.759 sec  <<< FAILURE!
+org.junit.ComparisonFailure: expected:<[Product successfully added to your shopping cart]> but was:<[]>
+	at org.junit.Assert.assertEquals(Assert.java:117)
+	at org.junit.Assert.assertEquals(Assert.java:146)
+	at com.qa.web.componenthelper.AssertHelper.areEqual(AssertHelper.java:6)
+	at com.qa.test.stepdefs.RegistrationStepTest.the_item_should_be_successfully_added(RegistrationStepTest.java:110)
+	at ?.the item should be successfully added(file:///C:/Users/User/OneDrive/CodingWebAutomation/src/test/java/com/qa/test/featurefile/RegistrationFeature.feature:23)
+

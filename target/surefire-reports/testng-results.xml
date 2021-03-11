@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="0" passed="0" failed="0" skipped="0">
+<testng-results skipped="0" failed="0" ignored="0" total="0" passed="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2021-03-11T12:51:18 GMT" name="Converted JUnit suite" finished-at="2021-03-11T12:51:37 GMT" duration-ms="18730">
+  <suite name="Converted JUnit suite" duration-ms="16338" started-at="2021-03-11T17:46:24 GMT" finished-at="2021-03-11T17:46:41 GMT">
     <groups>
     </groups>
-    <test started-at="2021-03-11T12:51:18 GMT" name="JUnitTests" finished-at="2021-03-11T12:51:37 GMT" duration-ms="18730">
+    <test name="JUnitTests" duration-ms="16338" started-at="2021-03-11T17:46:24 GMT" finished-at="2021-03-11T17:46:41 GMT">
     </test> <!-- JUnitTests -->
   </suite> <!-- Converted JUnit suite -->
 </testng-results>
