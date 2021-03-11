@@ -64,7 +64,7 @@ public class BaseClass {
     }
 
     public static void tearDown() {
-        //   ObjectRepository.getDriver().close();
+           ObjectRepository.getDriver().close();
     }
 
     public static void initializeReports() {
@@ -74,6 +74,6 @@ public class BaseClass {
         extent = new ExtentReports();
         extent.attachReporter(extentHTMLReporter);
         extent.setSystemInfo("Environment", "Local Automation testing");
-//    	extent.loadConfig(new File(Settings.ReportConfigPath));
+    //	extent.loadConfig(new File(Settings.ReportConfigPath));
     }
 }
